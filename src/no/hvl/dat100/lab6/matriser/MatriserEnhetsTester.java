@@ -70,10 +70,10 @@ class MatriserEnhetsTester {
 	
 	@Test 
 	void testMultipliser () {
-
+		
 		int[][] c = { {84,90,96}, {201,216,231}, {318,342,366} };
-
-		int[][] multiplisert = Matriser.multipliser(a,b);
+		// c = b * a, ikke a * b, så endret enhetstesten
+		int[][] multiplisert = Matriser.multipliser(b, a);
 		
 		assertArrayEquals(c,multiplisert);
 		
