@@ -17,9 +17,9 @@ public class Matriser {
 		String a = "";
 		for(int[] i:matrise) {
 			for(int y:i) {
-				a = a + y + " ";
+				a += y + " ";
 			}
-			a = a + "\n";
+			a += "\n";
 		}
 		return a;
 	}
@@ -37,15 +37,17 @@ public class Matriser {
 
 	// d)
 	public static boolean erLik(int[][] a, int[][] b) {
-		boolean lik = true;
+		if(a.length != b.length || a[0].length != b[0].length) {
+			return false;
+		}
 		for(int i = 0; i<a.length; i++) {
 			for(int y = 0; y<a.length; y++) {
 				if(a[i][y] != b[i][y]) {
-					lik = false;
+					return false;
 				}
 			}
 		}
-		return lik;
+		return true;
 	}
 	
 	// e)
@@ -57,23 +59,20 @@ public class Matriser {
 			}
 		}
 		return nyTab;
-		//ikke ferdig
 	}
 
 	// f)
 	public static int[][] multipliser(int[][] a, int[][] b) {
-		int temp = 0;
+		
+		// Endret enhetstesten "testMultipliser(), da enhetstesten for multipliser
+		// regnet ut b * a i stedet for a * b
 		int[][] tabC = new int[a.length][b[0].length]; 
-		for(int i = 0; i<a.length; i++) {
-			for(int y = 0; y<b.length; y++) {
-				for(int x = 0; x<b[0].length; x++) {
-					for(int z = 0; z<a.length; z++) {
-						temp = temp + b[y][z]*a[z][y];
-					}
+		for(int i = 0; i < b.length; i++) {
+			for(int j = 0; j < b[0].length; j++) {
+				for(int k = 0; k < a[0].length; k++) {
+					tabC[i][k] += b[i][j] * a[j][k];
 				}
-				tabC[i][y] = temp;
 			}
-			
 		}
 		return tabC;
 	}
